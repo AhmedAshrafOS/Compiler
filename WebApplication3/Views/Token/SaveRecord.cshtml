@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "SaveRecord";
+}
+<h2>SaveRecord</h2>
+
+@using (Html.BeginForm("SaveRecord"))
+{
+    @Html.AntiForgeryToken()
+    @Html.TextBox("file")
+    <input type="submit" value="Submit" />
+}
+/**/
+@if (ViewBag.Emp_data != null)
+{
+    foreach (var item in ViewBag.Emp_data)
+    {
+        <div>
+            <h6> @item</h6>
+        </div>
+
+    }
+}
