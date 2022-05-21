@@ -2,9 +2,79 @@
 @{
     ViewBag.Title = "SaveRecord";
 }
-<h2>SaveRecord</h2>
 
-@using (Html.BeginForm("SaveRecord"))
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/codemirror-5.65.3/lib/codemirror.css">
+    <link rel="stylesheet" href="~/Content/codemirror-5.65.3/theme/darcula.css">
+    <script src="~/Content/codemirror-5.65.3/addon/comment/comment.js"></script>
+    <script src="~/Content/codemirror-5.65.3/lib/codemirror.js"></script>
+
+    <link rel="stylesheet" href="~/Content/main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Compiler Project</h2>
+
+
+    <form method="POST" action="">
+        <input type="text" name="" id="input">ads
+        <div class="btns">
+
+            <label for="file">
+                Browse
+                <input class="browse" id="file" type="file" accept=".txt" name="browse">
+            </label>
+
+            <button class="scan" name="scan">Scan</button>
+            <button class="parse" name="parse">Parse</button>
+        </div>
+
+        <textarea class="editor" id="editor" cols="30" rows="10"></textarea>
+        <ul id="gess"></ul>
+        <script src="~/Scripts/script.js"></script>
+
+    </form>
+    <script>
+        input.addEventListener("input", myscript);
+
+        function myscript() {
+            // e.preventDefualt;
+
+            console.log("asda");
+        }
+        let editor = CodeMirror.fromTextArea(
+            document.getElementById("editor"), {
+            // theme: "darcula",
+            lineNumbers: true,
+        });
+        input.addEventListener("input", myscript);
+
+        function myscript() {
+            // e.preventDefualt;
+
+            console.log("asda");
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+@*@using (Html.BeginForm("SaveRecord"))
 {
     @Html.AntiForgeryToken()
     @Html.TextBox("file")
@@ -20,4 +90,4 @@
         </div>
 
     }
-}
+}*@
