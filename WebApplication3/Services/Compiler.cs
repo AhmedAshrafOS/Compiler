@@ -2601,7 +2601,13 @@ namespace WebApplication3.Services
         }
         public static string getCodeFromFile(string txt)
         {
-            string text = System.IO.File.ReadAllText(@txt);
+            string text;
+            if (System.IO.File.Exists(@txt))
+            {
+                text = System.IO.File.ReadAllText(@txt);
+            }
+            else
+                text = txt;
 
             return text;
         }

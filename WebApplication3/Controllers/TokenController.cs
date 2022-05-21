@@ -30,12 +30,28 @@ namespace WebApplication3.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SaveRecord(string file)
+        public ActionResult SaveRecord(String content, HttpPostedFileBase browse)
         {
-            string s = Compiler.getCodeFromFile("C:\\Users\\Ahmed\\Desktop\\WebApplication3\\WebApplication3\\WebApplication3\\Scanner.txt");
-            //Compiler.DisplayTokens(s);
+            if (browse != null)
+            {
+
+
+            string pic = System.IO.Path.GetFileName(browse.FileName);
+            string path = System.IO.Path.Combine(Server.MapPath("~/files/"),pic);
+            browse.SaveAs(path);
+            string sas = "C:\\Users\\Ahmed\\Desktop\\WebApplication3\\WebApplication3\\WebApplication3\\files\\" + pic;
+            string s = Compiler.getCodeFromFile(sas);
+
             var list = Compiler.DisplayTokens(s);
             ViewBag.Emp_data = list;
+            }
+            else if (content!=null)
+            {
+                string s = Compiler.getCodeFromFile(content);
+
+                var list = Compiler.DisplayTokens(s);
+                ViewBag.Emp_data = list;
+            }
             return View();
         }
 

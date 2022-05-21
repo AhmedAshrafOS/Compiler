@@ -22,24 +22,28 @@
     <h2>Compiler Project</h2>
 
 
-    <form method="POST" action="">
-        <input type="text" name="" id="input">ads
-        <div class="btns">
 
-            <label for="file">
-                Browse
-                <input class="browse" id="file" type="file" accept=".txt" name="browse">
-            </label>
+    <div validateRequest="false">
+        @using (Html.BeginForm("SaveRecord", "Token", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="btns">
+                <label for="file">
+                    Browse
+                    <input class="browse" id="file" type="file" accept=".txt" name="browse">
+                </label>
 
-            <button class="scan" name="scan">Scan</button>
-            <button class="parse" name="parse">Parse</button>
-        </div>
 
-        <textarea class="editor" id="editor" cols="30" rows="10"></textarea>
-        <ul id="gess"></ul>
-        <script src="~/Scripts/script.js"></script>
+                <button class="scan" name="scan">Scan</button>
+            </div>
+            <textarea name="content" class="editor" id="editor" cols="30" rows="10"></textarea>
+        }
+        @*<button class="parse" name="parse">Parse</button>*@
+    </div>
 
-    </form>
+
+    <script src="~/Scripts/script.js"></script>
+
     <script>
         input.addEventListener("input", myscript);
 
@@ -61,33 +65,21 @@
             console.log("asda");
         }
     </script>
+    <div style="color:white;">
+        @if (ViewBag.Emp_data != null)
+        {
+            foreach (var item in ViewBag.Emp_data)
+            {
+                <div>
+                    <h6> @item</h6>
+                </div>
 
+            }
+        }
+    </div>
 </body>
 
 </html>
 
 
 
-
-
-
-
-
-
-@*@using (Html.BeginForm("SaveRecord"))
-{
-    @Html.AntiForgeryToken()
-    @Html.TextBox("file")
-    <input type="submit" value="Submit" />
-}
-/**/
-@if (ViewBag.Emp_data != null)
-{
-    foreach (var item in ViewBag.Emp_data)
-    {
-        <div>
-            <h6> @item</h6>
-        </div>
-
-    }
-}*@
